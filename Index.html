@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <header>
+        <div id="alwayshere">Here</div> 
+        <link rel="stylesheet" href="Style.css">
+        <div class="todo-header">
+            <h1>To-Do List</h1> 
+            <form id="todo-form" onsubmit="return false">
+                <input type="text" id="todo-input" placeholder="Add a new to-do">
+                <button type="button" id="submitBtn">Add</button>
+            </form>
+        </div>
+    </header>
+    <body>
+        <div class="body-container"> <!--Container holding columns-->
+            <div class="column-container"> <!---Container for each column-->
+                <h2 style="text-align: center;">To-do Tasks</h2>
+                <ol class="to-do-list"> <!--Each item going down the list-->
+                    <li>Big</li>
+                    <li>Chungus</li>
+                </ol> 
+            </div>
+            <div class="column-container">
+                <h2 style="text-align: center;">Completed Tasks</h2>
+                <ol class="completed-list">
+                    <li>Big</li>
+                    <li>Chungus Complete</li>
+                </ol>
+            </div>
+        </div>
+    <script src="App.js"></script>
+    </body>
+    <footer>
+
+    </footer>
+</html>
