@@ -1,0 +1,19 @@
+body {
+
+}
+.body-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border: 1px solid black;
+}
+.column-container {
+    border: 1px solid blue;
+}
+
+.to-do-container{ 
+
+}
+
+.head-container {
+
+}
