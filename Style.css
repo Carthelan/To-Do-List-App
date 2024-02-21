@@ -6,12 +6,33 @@ html {
 }
 
 .column-container {
-    border-left: 1px solid black;
     flex: 50%;
+}
+
+#to-do-list {
+    font-size: large;
+}
+
+#completed-list {
+    font-size: large;
 }
 
 ol > li {
     padding: 5px;
+}
+
+.column-container + .column-container {
+    border-left: 1px solid black;
+}
+
+#todo-input {
+    width: 25%;
+    padding: 10px 15px;
+    box-sizing: border-box;
+}
+
+#submitBtn {
+    font-size: 15px;
 }
 
 .todo-header {
@@ -24,5 +45,5 @@ ol > li {
 }
 
 .head-container {
-    
+    border-bottom: 5px solid black;
 }

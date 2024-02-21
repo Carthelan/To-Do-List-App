@@ -4,7 +4,6 @@ const btn = document.getElementById("submitBtn");
 const todoOl = document.getElementById('to-do-list');
 const todoOLListen = document.querySelectorAll("to-do-list li");
 
-
 /*"read" the text in the to-do list input
     Location of the form
     script on button 
@@ -25,6 +24,7 @@ function addTodoItem() {
     newListItem.appendChild(newText)
     todoOl.appendChild(newListItem)
     input.value = "";
+    saveToDoList()
 }
 
 // Function to move item to completed list
@@ -32,13 +32,38 @@ function completeTodoItem(event) {
     let clickedListIem = event.target;
     todoOl.removeChild(clickedListIem);
     completedOL.appendChild(clickedListIem);
+    saveToDoList()
 }
 
 //Delete finished Tasks
 function deleteItem(event) {
-    let clickedListIem = event.target;
-    completedOL.removeChild(clickedListIem);
+    let confirmDelete = confirm("Are you sure you want to delete this task?");
+
+    if (confirmDelete){
+        let clickedListIem = event.target;
+        completedOL.removeChild(clickedListIem);
+        saveToDoList()
+    }
 }
+
+// Function to save list to local storage
+function saveToDoList () {
+    const todoList = todoOl.innerHTML;
+    localStorage.setItem('todolist', todoList);
+    const completeList = completedOL.innerHTML;
+    localStorage.setItem('completelist', completeList);
+    console.log(todoList);
+    console.log(completeList);
+}
+
+// Function to load saved list from local storage
+function loadToDoList () {
+    const previousToDo = localStorage.getItem('todolist')
+    const previousComplete = localStorage.getItem('completelist')
+
+    todoOl.innerHTML = previousToDo
+    completedOL.innerHTML = previousComplete
+} 
 
 // Event listener for submit button
 btn.addEventListener("click", addTodoItem);
@@ -48,3 +73,6 @@ todoOl.addEventListener('click', completeTodoItem);
 
 // Event listener for strike out
 completedOL.addEventListener('click', deleteItem);
+
+// Load saved todo list
+document.addEventListener('DOMContentLoaded', loadToDoList)
