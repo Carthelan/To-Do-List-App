@@ -3,9 +3,8 @@ html {
 }
 .body-container {
     display: flex; 
-
-
 }
+
 .column-container {
     border-left: 1px solid black;
     flex: 50%;
@@ -20,14 +19,10 @@ ol > li {
   margin-bottom: 20px;
 }
 
-.to-do-list{ 
-
-}
-
-.completed-list {
-
+#completed-list {
+    text-decoration: line-through;
 }
 
 .head-container {
-
+    
 }

@@ -1,10 +1,9 @@
-//const form = document.getElementsByClassName('todo-form');
 const form = document.getElementById('todo-form');
 const completedOL = document.getElementById('completed-list');
 const btn = document.getElementById("submitBtn");
-//const input = document.getElementById('todo-input');
 const todoOl = document.getElementById('to-do-list');
-//let input = document.getElementById('alwayshere');
+const todoOLListen = document.querySelectorAll("to-do-list li");
+
 
 /*"read" the text in the to-do list input
     Location of the form
@@ -20,23 +19,32 @@ Make To-Do tasks cross out and move to "Completed Tasks" on click
 // Function to add item to to-do list
 function addTodoItem() {
     let input = document.getElementById('todo-input');
-    //let input = document.getElementById('alwayshere');
-    //let todoOL = document.getElementById('to-do-list');
-    //let inputValue = input.value
     let inputValue = input.value
-    //todoOl.innerHTML = `<li>${inputValue}<li>`
     let newListItem = document.createElement('li');
     let newText = document.createTextNode(`${inputValue}`)
     newListItem.appendChild(newText)
-    document.body.insertBefore(newListItem, todoOl)
-    console.log(`Input Value: ${inputValue}`);
+    todoOl.appendChild(newListItem)
+    input.value = "";
 }
 
 // Function to move item to completed list
-function completeTodoItem(todolistItem) {
-
+function completeTodoItem(event) {
+    let clickedListIem = event.target;
+    todoOl.removeChild(clickedListIem);
+    completedOL.appendChild(clickedListIem);
 }
 
-// Event listener for 
+//Delete finished Tasks
+function deleteItem(event) {
+    let clickedListIem = event.target;
+    completedOL.removeChild(clickedListIem);
+}
+
+// Event listener for submit button
 btn.addEventListener("click", addTodoItem);
-//form.addEventListener("submit", addTodoItem(input.value));
+
+// Event listener for strike out
+todoOl.addEventListener('click', completeTodoItem);
+
+// Event listener for strike out
+completedOL.addEventListener('click', deleteItem);
